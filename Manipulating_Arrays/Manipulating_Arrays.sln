@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manipulating_Arrays_ConsoleApp", "Manipulating_Arrays_ConsoleApp.csproj", "{DAA4E307-28A7-47F0-A6C2-0A355945B8A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manipulating_Array_Library", "Manipulating_Array_Library\Manipulating_Array_Library.csproj", "{8EBDF2DB-78BA-4C0D-AFE0-F92B3FB60791}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAA4E307-28A7-47F0-A6C2-0A355945B8A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA4E307-28A7-47F0-A6C2-0A355945B8A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA4E307-28A7-47F0-A6C2-0A355945B8A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA4E307-28A7-47F0-A6C2-0A355945B8A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EBDF2DB-78BA-4C0D-AFE0-F92B3FB60791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EBDF2DB-78BA-4C0D-AFE0-F92B3FB60791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EBDF2DB-78BA-4C0D-AFE0-F92B3FB60791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EBDF2DB-78BA-4C0D-AFE0-F92B3FB60791}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF8EDAA4-8F9A-4B84-B646-F9FEFFFFF6FC}
+	EndGlobalSection
+EndGlobal

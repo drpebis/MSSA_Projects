@@ -1,0 +1,10 @@
+C:\Users\Alex\source\repos\ConsoleApp13\bin\Debug\ConsoleApp13.exe.config
+C:\Users\Alex\source\repos\ConsoleApp13\bin\Debug\ConsoleApp13.exe
+C:\Users\Alex\source\repos\ConsoleApp13\bin\Debug\ConsoleApp13.pdb
+C:\Users\Alex\source\repos\ConsoleApp13\bin\Debug\Manipulating_Array_Library.dll
+C:\Users\Alex\source\repos\ConsoleApp13\bin\Debug\Manipulating_Array_Library.pdb
+C:\Users\Alex\source\repos\ConsoleApp13\obj\Debug\Manipulating_Arrays_ConsoleApp.csprojAssemblyReference.cache
+C:\Users\Alex\source\repos\ConsoleApp13\obj\Debug\Manipulating_Arrays_ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\Alex\source\repos\ConsoleApp13\obj\Debug\Manipulating_Arrays_ConsoleApp.csproj.CopyComplete
+C:\Users\Alex\source\repos\ConsoleApp13\obj\Debug\ConsoleApp13.exe
+C:\Users\Alex\source\repos\ConsoleApp13\obj\Debug\ConsoleApp13.pdb
