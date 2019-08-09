@@ -1,0 +1,7 @@
+C:\Users\Alex\Desktop\Monte_Carlo\bin\Debug\Monte_Carlo.exe.config
+C:\Users\Alex\Desktop\Monte_Carlo\bin\Debug\Monte_Carlo.exe
+C:\Users\Alex\Desktop\Monte_Carlo\bin\Debug\Monte_Carlo.pdb
+C:\Users\Alex\Desktop\Monte_Carlo\obj\Debug\Monte_Carlo.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Desktop\Monte_Carlo\obj\Debug\Monte_Carlo.exe
+C:\Users\Alex\Desktop\Monte_Carlo\obj\Debug\Monte_Carlo.pdb
+C:\Users\Alex\Desktop\Monte_Carlo\obj\Debug\Monte_Carlo.csprojAssemblyReference.cache
