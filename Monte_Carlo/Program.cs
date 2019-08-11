@@ -17,11 +17,11 @@ namespace Monte_Carlo
                 this.x = x;
                 this.y = y;
             }
-            public Coords(Random coord) 
+            public Coords(Random rand) 
             {
                 //Random coord = new Random(); 
-                this.x = coord.NextDouble(); 
-                this.y = coord.NextDouble(); 
+                this.x = rand.NextDouble(); 
+                this.y = rand.NextDouble(); 
             }
             public double Hypotenuse() => Math.Sqrt(((Math.Pow(x, 2) + (Math.Pow(y, 2)))));
             //{
@@ -31,35 +31,37 @@ namespace Monte_Carlo
             //    return hyp;
             //}
         }
-        public static void CreateArray(int num) 
+        public static void MonteCarloArray(int num) 
         {
-            Random coord = new Random();
+            Console.WriteLine($"For an array the size of {num}:\n");
+            Random rand = new Random();
             int length = num; 
             Coords[] array = new Coords[length]; 
-            int count = 0;
+            double count = 0;
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = new Coords(coord);
+                array[i] = new Coords(rand);
 
                 if (array[i].Hypotenuse() <= 1)
                 {
                     count++;
                 }
             }
+
             double result = (count / length) * 4;
-            double diff = Math.Abs(Math.PI - result);
-            Console.WriteLine($"Step 4: {count}\nDifference: {diff}");
+
+            Console.WriteLine($"The count was: {count}\nThe result was: {result}\nThe difference between the result and Pi is: {Math.Abs(Math.PI - result)}\n");
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Type an integer here: ");
+            Console.WriteLine("What is the length of the array? ");
             Console.Write(":>");
             int num = int.Parse(Console.ReadLine());
-            CreateArray(num);
-            CreateArray(10);
-            CreateArray(100);
-            CreateArray(1000);
-            CreateArray(10000);
+            MonteCarloArray(num);
+            MonteCarloArray(10);
+            MonteCarloArray(100);
+            MonteCarloArray(1000);
+            MonteCarloArray(10000);
             Console.ReadLine();
         }
     }
