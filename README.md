@@ -1,6 +1,9 @@
 # MSSA_Projects
 Collection of various projects I've made while in MSSA
 
+-Party Invites(12 Aug 19)
+ASP.NET project that posts RSVPs for a party.
+
 -Monte Carlo Problem (9 Aug 19):
 C# Application approximating PI through a monty carlo function. 
 
