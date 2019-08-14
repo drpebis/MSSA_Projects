@@ -1,6 +1,10 @@
 # MSSA_Projects
 Collection of various projects I've made while in MSSA
 
+-Military Unit(14 Aug 19)
+C# Console App using the concepts of inheritance and the instantiation of 
+classes and objects. 
+
 -Party Invites(12 Aug 19)
 ASP.NET project that posts RSVPs for a party.
 

@@ -1,0 +1,7 @@
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Military_Unit\obj\Debug\Military_Unit.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Military_Unit\obj\Debug\Military_Unit.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Military_Unit\bin\Debug\Military_Unit.exe.config
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Military_Unit\bin\Debug\Military_Unit.exe
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Military_Unit\bin\Debug\Military_Unit.pdb
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Military_Unit\obj\Debug\Military_Unit.exe
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Military_Unit\obj\Debug\Military_Unit.pdb
