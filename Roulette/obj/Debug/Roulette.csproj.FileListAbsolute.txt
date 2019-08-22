@@ -1,0 +1,7 @@
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Roulette\obj\Debug\Roulette.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Roulette\obj\Debug\Roulette.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Roulette\bin\Debug\Roulette.exe.config
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Roulette\bin\Debug\Roulette.exe
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Roulette\bin\Debug\Roulette.pdb
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Roulette\obj\Debug\Roulette.exe
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Roulette\obj\Debug\Roulette.pdb

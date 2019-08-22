@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alex\\source\\repos\\PartyInvites\\PartyInvites.csproj": {}
+    "C:\\Users\\Alex\\Documents\\GitHub\\MSSA_Projects\\PartyInvites\\PartyInvites.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alex\\source\\repos\\PartyInvites\\PartyInvites.csproj": {
+    "C:\\Users\\Alex\\Documents\\GitHub\\MSSA_Projects\\PartyInvites\\PartyInvites.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex\\source\\repos\\PartyInvites\\PartyInvites.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\MSSA_Projects\\PartyInvites\\PartyInvites.csproj",
         "projectName": "PartyInvites",
-        "projectPath": "C:\\Users\\Alex\\source\\repos\\PartyInvites\\PartyInvites.csproj",
+        "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\MSSA_Projects\\PartyInvites\\PartyInvites.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alex\\source\\repos\\PartyInvites\\obj\\",
+        "outputPath": "C:\\Users\\Alex\\Documents\\GitHub\\MSSA_Projects\\PartyInvites\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

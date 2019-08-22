@@ -1,6 +1,11 @@
 # MSSA_Projects
 Collection of various projects I've made while in MSSA
 
+-Roulette(22 Aug 19)
+C# Console app which simulates a roulette wheel and 10 different kinds of bets
+the player has 10 bets in total and $100 to bet with, the goal is to make
+as much money within those 10 bets as possible. 
+
 -Military Unit(14 Aug 19)
 C# Console App using the concepts of inheritance and the instantiation of 
 classes and objects. 
