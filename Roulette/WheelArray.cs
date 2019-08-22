@@ -14,16 +14,32 @@ namespace Roulette
         //this simulates the ball falling into one of the bins in the roulette wheel.
         public int GetBallPosition(int[] wheel)
         {
+            int result;
             Random r = new Random();
             ballPosition = r.Next(0, 37);
-            int result = wheel[ballPosition-1];
+            if (ballPosition == 0)
+            {
+                result = wheel[ballPosition];
+            }
+            else
+            {
+                result = wheel[ballPosition - 1];
+            }
             return result;
         }
         //This method takes the same value from above and determines the color of the bin that the ball
         //fell into
         public string GetBallColor(string[] color)
         {
-            string resultC = color[ballPosition-1];
+            string resultC;
+            if (ballPosition == 0)
+            {
+                resultC = color[ballPosition];
+            }
+            else
+            {
+                resultC = color[ballPosition - 1];
+            }
             return resultC;
         }
         //This method takes an array and checks if the bin that the ball fell into is within the array

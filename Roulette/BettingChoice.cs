@@ -128,10 +128,11 @@ namespace Roulette
                     case "9":
                         //split bet, how the betting table is set up, each number is either +1, -1, +4, or -4
                         //away from the user's first bet, so this checks for that condition before the bet is valid
-                        Console.WriteLine("Which two numbers for the split?");
+                        Console.WriteLine("Enter your first number, then press enter:");
                         Console.Write(":>");
                         int choicea, choiceb;
                         choicea = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter your second number, then press enter:");
                         Console.Write(":>");
                         do
                         {
@@ -153,7 +154,7 @@ namespace Roulette
                         {
                             Console.Write(":>");
                             corner = Convert.ToInt32(Console.ReadLine());
-                        } while (corner % 3 == 0 && corner < 1 && corner > 36);
+                        } while (corner < 1 && corner > 36);
                         Bet();
                         resultI = wa.GetBallPosition(wa.wheelAll);
                         resultC = wa.GetBallColor(wa.color);
@@ -195,13 +196,24 @@ namespace Roulette
         //Corner bet, by adding +1, +2, and +1 to the smallest value, this will make the corner valid
         public void Corner(int corner1)
         {
-            int corner2 = corner1 + 1;
-            int corner3 = corner2 + 2;
-            int corner4 = corner3 + 1;
+            int corner2, corner3, corner4;
+            if (corner1 % 3 != 0)
+            {
+                corner2 = corner1 + 1;
+                corner3 = corner2 + 2;
+                corner4 = corner3 + 1;
+            }
+            else
+            {
+                corner2 = corner1 - 1;
+                corner3 = corner1 + 3;
+                corner4 = corner3 - 1;
+            }
             if (corner1 == wa.ballPosition || corner2 == wa.ballPosition || corner3 == wa.ballPosition || corner4 == wa.ballPosition)
             {
-                Player.money += (Player.wager * 8);
+                Player.money += ((Player.wager * 8) - Player.wager);
                 Console.WriteLine($"You won ${Player.wager * 8}!");
+                Console.WriteLine("Press enter...");
             }
             else
             {
@@ -213,8 +225,9 @@ namespace Roulette
         {
             if (choicea == wa.ballPosition || choiceb == wa.ballPosition)
             {
-                Player.money += (Player.wager * 18);
+                Player.money += ((Player.wager * 18) - Player.wager);
                 Console.WriteLine($"You won ${Player.wager * 18}!");
+                Console.WriteLine("Press enter...");
             }
             else
             {
@@ -229,8 +242,9 @@ namespace Roulette
                 case 1:
                     if (choice == 1 && wa.ballPosition <= 6)
                     {
-                        Player.money += (Player.wager * 5);
+                        Player.money += ((Player.wager * 6) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 5}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -240,8 +254,9 @@ namespace Roulette
                 case 2:
                     if (choice == 2 && wa.ballPosition >= 7 && wa.ballPosition <= 12)
                     {
-                        Player.money += (Player.wager * 5);
+                        Player.money += ((Player.wager * 6) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 5}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -251,8 +266,9 @@ namespace Roulette
                 case 3:
                     if (choice == 3 && wa.ballPosition >= 13 && wa.ballPosition <= 18)
                     {
-                        Player.money += (Player.wager * 5);
+                        Player.money += ((Player.wager * 6) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 5}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -262,8 +278,9 @@ namespace Roulette
                 case 4:
                     if (choice == 4 && wa.ballPosition >= 19 && wa.ballPosition <= 24)
                     {
-                        Player.money += (Player.wager * 5);
+                        Player.money += ((Player.wager * 6) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 5}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -273,8 +290,9 @@ namespace Roulette
                 case 5:
                     if (choice == 5 && wa.ballPosition >= 25 && wa.ballPosition <= 30)
                     {
-                        Player.money += (Player.wager * 5);
+                        Player.money += ((Player.wager * 6) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 5}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -284,8 +302,9 @@ namespace Roulette
                 case 6:
                     if (choice == 6 && wa.ballPosition >= 31 && wa.ballPosition <= 36)
                     {
-                        Player.money += (Player.wager * 5);
+                        Player.money += ((Player.wager * 6) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 5}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -303,8 +322,9 @@ namespace Roulette
                     bool column = wa.InColumn(wa.street1);
                     if (choice == 1 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -315,8 +335,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street2);
                     if (choice == 2 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -327,8 +348,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street3);
                     if (choice == 3 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -339,8 +361,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street4);
                     if (choice == 4 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -351,8 +374,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street5);
                     if (choice == 5 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -363,8 +387,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street6);
                     if (choice == 6 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -375,8 +400,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street7);
                     if (choice == 7 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -387,8 +413,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street8);
                     if (choice == 8 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -399,8 +426,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street9);
                     if (choice == 9 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -411,8 +439,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street10);
                     if (choice == 10 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -423,8 +452,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street11);
                     if (choice == 11 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -435,8 +465,9 @@ namespace Roulette
                     column = wa.InColumn(wa.street12);
                     if (choice == 12 && column == true)
                     {
-                        Player.money += (Player.wager * 11);
+                        Player.money += ((Player.wager * 11) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 11}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -456,8 +487,9 @@ namespace Roulette
                     bool column = wa.InColumn(wa.column1);
                     if (choice == 1 && column == true)
                     {
-                        Player.money += (Player.wager * 3);
+                        Player.money += ((Player.wager * 3) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 3}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -468,8 +500,9 @@ namespace Roulette
                     column = wa.InColumn(wa.column2);
                     if (choice == 2 && column == true)
                     {
-                        Player.money += (Player.wager * 3);
+                        Player.money += ((Player.wager * 3) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 3}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -480,8 +513,9 @@ namespace Roulette
                     column = wa.InColumn(wa.column3);
                     if (choice == 3 && column == true)
                     {
-                        Player.money += (Player.wager * 3);
+                        Player.money += ((Player.wager * 3) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 3}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -498,8 +532,9 @@ namespace Roulette
                 case 1:
                     if (wa.ballPosition <= 12)
                     {
-                        Player.money += (Player.wager * 3);
+                        Player.money += ((Player.wager * 3) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 3}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -509,8 +544,9 @@ namespace Roulette
                 case 2:
                     if (wa.ballPosition >= 13 && wa.ballPosition <= 24)
                     {
-                        Player.money += (Player.wager * 3);
+                        Player.money += ((Player.wager * 3) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 3}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -520,8 +556,9 @@ namespace Roulette
                 case 3:
                     if (wa.ballPosition >= 25 && wa.ballPosition <= 36)
                     {
-                        Player.money += (Player.wager * 3);
+                        Player.money += ((Player.wager * 3) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 3}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -538,8 +575,9 @@ namespace Roulette
                 case 1:
                     if (wa.ballPosition <= 18)
                     {
-                        Player.money += (Player.wager * 2);
+                        Player.money += ((Player.wager * 2) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 2}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -549,8 +587,9 @@ namespace Roulette
                 case 2:
                     if (wa.ballPosition >= 19)
                     {
-                        Player.money += (Player.wager * 2);
+                        Player.money += ((Player.wager * 2) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 2}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -565,13 +604,15 @@ namespace Roulette
         {
             if (choice == 1 && resultC == "Red")
             {
-                Player.money += (Player.wager * 2);
+                Player.money += ((Player.wager * 2) - Player.wager);
                 Console.WriteLine($"You won ${Player.wager * 2}!");
+                Console.WriteLine("Press enter...");
             }
             else if (choice == 2 && resultC == "Black")
             {
-                Player.money += (Player.wager * 2);
+                Player.money += ((Player.wager * 2) - Player.wager);
                 Console.WriteLine($"You won ${Player.wager * 2}!");
+                Console.WriteLine("Press enter...");
             }
             else
             {
@@ -588,8 +629,9 @@ namespace Roulette
                 case 1:
                     if (wa.ballPosition % 2 == 0)
                     {
-                        Player.money += (Player.wager * 2);
+                        Player.money += ((Player.wager * 2) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 2}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
@@ -599,12 +641,12 @@ namespace Roulette
                 case 2:
                     if (wa.ballPosition % 2 != 0)
                     {
-                        Player.money += (Player.wager * 2);
+                        Player.money += ((Player.wager * 2) - Player.wager);
                         Console.WriteLine($"You won ${Player.wager * 2}!");
+                        Console.WriteLine("Press enter...");
                     }
                     else
                     {
-                        Console.WriteLine(wa.ballPosition);
                         PlayerLost();
                     }
                     break;
@@ -617,6 +659,7 @@ namespace Roulette
             Player p = new Player();
             Player.money -= Player.wager;
             Console.WriteLine($"You lost, you now have ${Player.money} left.");
+            Console.WriteLine("Press enter...");
             if (Player.money <= 0)
             {
                 Console.WriteLine("You've run out of cash!\nTry again...");
