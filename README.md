@@ -1,6 +1,10 @@
 # MSSA_Projects
 Collection of various projects I've made while in MSSA
 
+-Guess My Number(27 Aug 19)
+C# Console App which uses a simple bisection algorithm in which the player or the 
+computer can guess numbers using the algorithm. 
+
 -Roulette(22 Aug 19)
 C# Console app which simulates a roulette wheel and 10 different kinds of bets
 the player has 10 bets in total and $100 to bet with, the goal is to make
