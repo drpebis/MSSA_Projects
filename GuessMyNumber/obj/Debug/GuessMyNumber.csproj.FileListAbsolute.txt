@@ -1,7 +1,0 @@
-C:\Users\Alex\Documents\GitHub\MSSA_Projects\GuessMyNumber\obj\Debug\GuessMyNumber.csprojAssemblyReference.cache
-C:\Users\Alex\Documents\GitHub\MSSA_Projects\GuessMyNumber\obj\Debug\GuessMyNumber.csproj.CoreCompileInputs.cache
-C:\Users\Alex\Documents\GitHub\MSSA_Projects\GuessMyNumber\bin\Debug\GuessMyNumber.exe.config
-C:\Users\Alex\Documents\GitHub\MSSA_Projects\GuessMyNumber\bin\Debug\GuessMyNumber.exe
-C:\Users\Alex\Documents\GitHub\MSSA_Projects\GuessMyNumber\bin\Debug\GuessMyNumber.pdb
-C:\Users\Alex\Documents\GitHub\MSSA_Projects\GuessMyNumber\obj\Debug\GuessMyNumber.exe
-C:\Users\Alex\Documents\GitHub\MSSA_Projects\GuessMyNumber\obj\Debug\GuessMyNumber.pdb
