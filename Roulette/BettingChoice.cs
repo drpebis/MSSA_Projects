@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Roulette.Player;
-using static Roulette.WheelArray;
 
 namespace Roulette
 {
-    class BettingChoice
+    internal class BettingChoice
     {
-        WheelArray wa = new WheelArray();
-        WheelSpin ws = new WheelSpin();
+        private readonly WheelArray wa = new WheelArray();
+        private readonly WheelSpin ws = new WheelSpin();
         public int binChoice { get; set; }
 
         //This method takes the string from the player class and routes the player's chosen bet through it's proper course.
@@ -27,8 +22,8 @@ namespace Roulette
                         Console.Write(":>");
                         NumCheck();
                         Bet();
-                        int resultI = wa.GetBallPosition(wa.wheelAll);
-                        string resultC = wa.GetBallColor(wa.color);
+                        var resultI = wa.GetBallPosition(wa.wheelAll);
+                        var resultC = wa.GetBallColor(wa.color);
                         ws.Spin();
                         Console.WriteLine($"The ball landed in {resultC} {resultI}.");
                         Number();
@@ -38,7 +33,7 @@ namespace Roulette
                         //Even or odd bet
                         Console.WriteLine("1. Evens | 2. Odds?");
                         Console.Write(":>");
-                        int evenOdd = Convert.ToInt32(Console.ReadLine());
+                        var evenOdd = Convert.ToInt32(Console.ReadLine());
                         Bet();
                         resultI = wa.GetBallPosition(wa.wheelAll);
                         resultC = wa.GetBallColor(wa.color);
@@ -51,7 +46,7 @@ namespace Roulette
                         //red or black bet
                         Console.WriteLine("1.Reds | 2. Blacks");
                         Console.Write(":>");
-                        int choice = Convert.ToInt32(Console.ReadLine());
+                        var choice = Convert.ToInt32(Console.ReadLine());
                         Bet();
                         resultI = wa.GetBallPosition(wa.wheelAll);
                         resultC = wa.GetBallColor(wa.color);
@@ -137,7 +132,9 @@ namespace Roulette
                         do
                         {
                             choiceb = Convert.ToInt32(Console.ReadLine());
-                        } while (choicea != choiceb + 1 && choicea != choiceb - 1 && choicea != choiceb + 3 && choicea != choiceb - 3);
+                        } while (choicea != choiceb + 1 && choicea != choiceb - 1 && choicea != choiceb + 3 &&
+                                 choicea != choiceb - 3);
+
                         Bet();
                         resultI = wa.GetBallPosition(wa.wheelAll);
                         resultC = wa.GetBallColor(wa.color);
@@ -155,6 +152,7 @@ namespace Roulette
                             Console.Write(":>");
                             corner = Convert.ToInt32(Console.ReadLine());
                         } while (corner < 1 && corner > 36);
+
                         Bet();
                         resultI = wa.GetBallPosition(wa.wheelAll);
                         resultC = wa.GetBallColor(wa.color);
@@ -165,34 +163,36 @@ namespace Roulette
                         break;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
                 Console.ReadLine();
             }
         }
+
         //This method checks to see if the player has enough money to bet
         public void Bet()
         {
             try
             {
-                Player p = new Player();
+                var p = new Player();
                 Console.WriteLine("How much do you bet?");
                 Console.Write(":>");
-                Player.wager = Convert.ToInt32(Console.ReadLine());
-                while (Player.wager > Player.money)
+                wager = Convert.ToInt32(Console.ReadLine());
+                while (wager > money)
                 {
                     Console.WriteLine("You're trying to bet more than what you have!");
                     Console.WriteLine("Try again:");
                     Console.Write(":>");
-                    Player.wager = Convert.ToInt32(Console.ReadLine());
+                    wager = Convert.ToInt32(Console.ReadLine());
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
         }
+
         //Corner bet, by adding +1, +2, and +1 to the smallest value, this will make the corner valid
         public void Corner(int corner1)
         {
@@ -209,10 +209,12 @@ namespace Roulette
                 corner3 = corner1 + 3;
                 corner4 = corner3 - 1;
             }
-            if (corner1 == wa.ballPosition || corner2 == wa.ballPosition || corner3 == wa.ballPosition || corner4 == wa.ballPosition)
+
+            if (corner1 == wa.ballPosition || corner2 == wa.ballPosition || corner3 == wa.ballPosition ||
+                corner4 == wa.ballPosition)
             {
-                Player.money += ((Player.wager * 8) - Player.wager);
-                Console.WriteLine($"You won ${Player.wager * 8}!");
+                money += wager * 8 - wager;
+                Console.WriteLine($"You won ${wager * 8}!");
                 Console.WriteLine("Press enter...");
             }
             else
@@ -220,13 +222,14 @@ namespace Roulette
                 PlayerLost();
             }
         }
+
         //Split bet only works if the players second bet is +1, -1, +4, or -4 from the first bet
         public void Split(int choicea, int choiceb)
         {
             if (choicea == wa.ballPosition || choiceb == wa.ballPosition)
             {
-                Player.money += ((Player.wager * 18) - Player.wager);
-                Console.WriteLine($"You won ${Player.wager * 18}!");
+                money += wager * 18 - wager;
+                Console.WriteLine($"You won ${wager * 18}!");
                 Console.WriteLine("Press enter...");
             }
             else
@@ -234,6 +237,7 @@ namespace Roulette
                 PlayerLost();
             }
         }
+
         //6's bet splits the board into 6, 5 to 1 odds
         public void Double6(int choice)
         {
@@ -242,240 +246,260 @@ namespace Roulette
                 case 1:
                     if (choice == 1 && wa.ballPosition <= 6)
                     {
-                        Player.money += ((Player.wager * 6) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 5}!");
+                        money += wager * 6 - wager;
+                        Console.WriteLine($"You won ${wager * 5}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 2:
                     if (choice == 2 && wa.ballPosition >= 7 && wa.ballPosition <= 12)
                     {
-                        Player.money += ((Player.wager * 6) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 5}!");
+                        money += wager * 6 - wager;
+                        Console.WriteLine($"You won ${wager * 5}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 3:
                     if (choice == 3 && wa.ballPosition >= 13 && wa.ballPosition <= 18)
                     {
-                        Player.money += ((Player.wager * 6) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 5}!");
+                        money += wager * 6 - wager;
+                        Console.WriteLine($"You won ${wager * 5}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 4:
                     if (choice == 4 && wa.ballPosition >= 19 && wa.ballPosition <= 24)
                     {
-                        Player.money += ((Player.wager * 6) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 5}!");
+                        money += wager * 6 - wager;
+                        Console.WriteLine($"You won ${wager * 5}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 5:
                     if (choice == 5 && wa.ballPosition >= 25 && wa.ballPosition <= 30)
                     {
-                        Player.money += ((Player.wager * 6) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 5}!");
+                        money += wager * 6 - wager;
+                        Console.WriteLine($"You won ${wager * 5}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 6:
                     if (choice == 6 && wa.ballPosition >= 31 && wa.ballPosition <= 36)
                     {
-                        Player.money += ((Player.wager * 6) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 5}!");
+                        money += wager * 6 - wager;
+                        Console.WriteLine($"You won ${wager * 5}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
             }
         }
+
         //splits the board into threes, vertically
         public void Street(int choice)
         {
             switch (choice)
             {
                 case 1:
-                    bool column = wa.InColumn(wa.street1);
-                    if (choice == 1 && column == true)
+                    var column = wa.InColumn(wa.street1);
+                    if (choice == 1 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 2:
                     column = wa.InColumn(wa.street2);
-                    if (choice == 2 && column == true)
+                    if (choice == 2 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 3:
                     column = wa.InColumn(wa.street3);
-                    if (choice == 3 && column == true)
+                    if (choice == 3 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 4:
                     column = wa.InColumn(wa.street4);
-                    if (choice == 4 && column == true)
+                    if (choice == 4 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 5:
                     column = wa.InColumn(wa.street5);
-                    if (choice == 5 && column == true)
+                    if (choice == 5 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 6:
                     column = wa.InColumn(wa.street6);
-                    if (choice == 6 && column == true)
+                    if (choice == 6 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 7:
                     column = wa.InColumn(wa.street7);
-                    if (choice == 7 && column == true)
+                    if (choice == 7 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 8:
                     column = wa.InColumn(wa.street8);
-                    if (choice == 8 && column == true)
+                    if (choice == 8 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 9:
                     column = wa.InColumn(wa.street9);
-                    if (choice == 9 && column == true)
+                    if (choice == 9 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 10:
                     column = wa.InColumn(wa.street10);
-                    if (choice == 10 && column == true)
+                    if (choice == 10 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 11:
                     column = wa.InColumn(wa.street11);
-                    if (choice == 11 && column == true)
+                    if (choice == 11 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 12:
                     column = wa.InColumn(wa.street12);
-                    if (choice == 12 && column == true)
+                    if (choice == 12 && column)
                     {
-                        Player.money += ((Player.wager * 11) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 11}!");
+                        money += wager * 11 - wager;
+                        Console.WriteLine($"You won ${wager * 11}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
             }
         }
+
         //splits the board into three horizontal columns, unlike the street and 6's bet, I chose to have
         //this method check via another array vs just writing in the valid numbers. This way I got 
         //practice using boolean methods and checking values within arrays.
@@ -484,46 +508,50 @@ namespace Roulette
             switch (choice)
             {
                 case 1:
-                    bool column = wa.InColumn(wa.column1);
-                    if (choice == 1 && column == true)
+                    var column = wa.InColumn(wa.column1);
+                    if (choice == 1 && column)
                     {
-                        Player.money += ((Player.wager * 3) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 3}!");
+                        money += wager * 3 - wager;
+                        Console.WriteLine($"You won ${wager * 3}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 2:
                     column = wa.InColumn(wa.column2);
-                    if (choice == 2 && column == true)
+                    if (choice == 2 && column)
                     {
-                        Player.money += ((Player.wager * 3) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 3}!");
+                        money += wager * 3 - wager;
+                        Console.WriteLine($"You won ${wager * 3}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 3:
                     column = wa.InColumn(wa.column3);
-                    if (choice == 3 && column == true)
+                    if (choice == 3 && column)
                     {
-                        Player.money += ((Player.wager * 3) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 3}!");
+                        money += wager * 3 - wager;
+                        Console.WriteLine($"You won ${wager * 3}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
             }
         }
+
         //splits the board into chunks of 12
         public void Dozen(int choice)
         {
@@ -532,41 +560,45 @@ namespace Roulette
                 case 1:
                     if (wa.ballPosition <= 12)
                     {
-                        Player.money += ((Player.wager * 3) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 3}!");
+                        money += wager * 3 - wager;
+                        Console.WriteLine($"You won ${wager * 3}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 2:
                     if (wa.ballPosition >= 13 && wa.ballPosition <= 24)
                     {
-                        Player.money += ((Player.wager * 3) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 3}!");
+                        money += wager * 3 - wager;
+                        Console.WriteLine($"You won ${wager * 3}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 3:
                     if (wa.ballPosition >= 25 && wa.ballPosition <= 36)
                     {
-                        Player.money += ((Player.wager * 3) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 3}!");
+                        money += wager * 3 - wager;
+                        Console.WriteLine($"You won ${wager * 3}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
             }
         }
+
         //Checks if the ball is 18 or below 
         public void LowHigh(int choice)
         {
@@ -575,114 +607,120 @@ namespace Roulette
                 case 1:
                     if (wa.ballPosition <= 18)
                     {
-                        Player.money += ((Player.wager * 2) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 2}!");
+                        money += wager * 2 - wager;
+                        Console.WriteLine($"You won ${wager * 2}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 2:
                     if (wa.ballPosition >= 19)
                     {
-                        Player.money += ((Player.wager * 2) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 2}!");
+                        money += wager * 2 - wager;
+                        Console.WriteLine($"You won ${wager * 2}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
-                    break;
 
+                    break;
             }
         }
+
         //Checks if the color is red or black
         public void RedBlack(int choice, string resultC)
         {
             if (choice == 1 && resultC == "Red")
             {
-                Player.money += ((Player.wager * 2) - Player.wager);
-                Console.WriteLine($"You won ${Player.wager * 2}!");
+                money += wager * 2 - wager;
+                Console.WriteLine($"You won ${wager * 2}!");
                 Console.WriteLine("Press enter...");
             }
             else if (choice == 2 && resultC == "Black")
             {
-                Player.money += ((Player.wager * 2) - Player.wager);
-                Console.WriteLine($"You won ${Player.wager * 2}!");
+                money += wager * 2 - wager;
+                Console.WriteLine($"You won ${wager * 2}!");
                 Console.WriteLine("Press enter...");
             }
             else
             {
                 PlayerLost();
             }
-
         }
+
         //checks if the ball landed in an even or odd bin
         public void EvenOdd(int evenOdd)
         {
-            BettingChoice bc = new BettingChoice();
+            var bc = new BettingChoice();
             switch (evenOdd)
             {
                 case 1:
                     if (wa.ballPosition % 2 == 0)
                     {
-                        Player.money += ((Player.wager * 2) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 2}!");
+                        money += wager * 2 - wager;
+                        Console.WriteLine($"You won ${wager * 2}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
                 case 2:
                     if (wa.ballPosition % 2 != 0)
                     {
-                        Player.money += ((Player.wager * 2) - Player.wager);
-                        Console.WriteLine($"You won ${Player.wager * 2}!");
+                        money += wager * 2 - wager;
+                        Console.WriteLine($"You won ${wager * 2}!");
                         Console.WriteLine("Press enter...");
                     }
                     else
                     {
                         PlayerLost();
                     }
+
                     break;
             }
         }
+
         //This method occurs every time the player loses, it takes out the wagered amount from the player's
         //money and checks if they have enough money to keep playing.
         public void PlayerLost()
         {
-            Player p = new Player();
-            Player.money -= Player.wager;
-            Console.WriteLine($"You lost, you now have ${Player.money} left.");
+            var p = new Player();
+            money -= wager;
+            Console.WriteLine($"You lost, you now have ${money} left.");
             Console.WriteLine("Press enter...");
-            if (Player.money <= 0)
+            if (money <= 0)
             {
                 Console.WriteLine("You've run out of cash!\nTry again...");
                 Console.ReadLine();
                 p.StartGame();
             }
         }
+
         //number bet, checks if the specific number the player is betting on gets called
         public void Number()
         {
-            Player p = new Player();
-            BettingChoice b = new BettingChoice();
+            var p = new Player();
+            var b = new BettingChoice();
             if (b.binChoice == wa.ballPosition)
             {
-                Player.money += (Player.wager * 35);
-                Console.WriteLine($"You won ${Player.wager * 35}!");
+                money += wager * 35;
+                Console.WriteLine($"You won ${wager * 35}!");
             }
             else
             {
                 PlayerLost();
             }
-
         }
+
         //validates the players choice in the number bet, I only use this method once, it was 
         //practice to pass values around. 
         public int NumCheck()
@@ -690,21 +728,15 @@ namespace Roulette
             int binChoice;
             do
             {
-                string choice = (Console.ReadLine().ToString().ToLower());
+                var choice = Console.ReadLine().ToLower();
                 if (choice == "0")
-                {
                     binChoice = 36;
-                }
-                else if (choice == "00")
-                {
-                    binChoice = 37;
-                }
+                else if (choice == "00") binChoice = 37;
                 binChoice = Convert.ToInt32(choice);
                 binChoice++;
             } while (binChoice < 1 || binChoice > 38);
 
             return binChoice;
         }
-
     }
 }
