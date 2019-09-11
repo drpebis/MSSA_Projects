@@ -1,0 +1,7 @@
+C:\Users\Alex\Desktop\KeyValueStore\bin\Debug\KeyValueStore.exe.config
+C:\Users\Alex\Desktop\KeyValueStore\bin\Debug\KeyValueStore.exe
+C:\Users\Alex\Desktop\KeyValueStore\bin\Debug\KeyValueStore.pdb
+C:\Users\Alex\Desktop\KeyValueStore\obj\Debug\KeyValueStore.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Desktop\KeyValueStore\obj\Debug\KeyValueStore.exe
+C:\Users\Alex\Desktop\KeyValueStore\obj\Debug\KeyValueStore.pdb
+C:\Users\Alex\Desktop\KeyValueStore\obj\Debug\KeyValueStore.csprojAssemblyReference.cache

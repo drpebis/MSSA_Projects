@@ -1,6 +1,9 @@
 # MSSA_Projects
 Collection of various projects I've made while in MSSA
 
+-Key Value Store (11 Sept 19)
+Application involving the usage of structs, and object arrays.
+
 -Guess My Number(27 Aug 19)
 C# Console App which uses a simple bisection algorithm in which the player or the 
 computer can guess numbers using the algorithm. 
