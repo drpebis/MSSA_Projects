@@ -3,11 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace GuessMyNumber
 {
     class Menus
     {
+        //[Range(0,10)]
+        //public int x { get; set; }
+
+        //public int X
+        //{
+        //    get
+        //    {
+        //        return this.x;
+        //    }
+        //    set
+        //    {
+        //        if (x < 0 || x > 10)
+        //        {
+        //            throw new ArgumentOutOfRangeException($"Value {this.X} not within parameters");
+        //        }
+        //        else
+        //        {
+        //            x = this.X;
+        //        }
+        //    }
+        //}
         public void Start()
         {
             Calculation c = new Calculation();
@@ -64,8 +86,16 @@ namespace GuessMyNumber
             Console.Write(":>");
             try
             {
-                int x = Convert.ToInt32(Console.ReadLine());
-                if (x < 0 || x > 10)
+                MenuOption m = new MenuOption();
+                m.x = Convert.ToInt32(Console.ReadLine());
+                //var context = new ValidationContext(m.x);
+                //var result = new List<ValidationResult>();
+                //var isValid = Validator.TryValidateObject(m.x, context, result);
+                //if(result.Any())
+                //{
+                //    Console.WriteLine(result[0].ErrorMessage);
+                //}
+                if (m.x < 0 || m.x > 10)
                 {
                     Console.WriteLine("Invalid entry.");
                     Console.ReadLine();
@@ -73,7 +103,7 @@ namespace GuessMyNumber
                     i.IntroScreen();
                     Start();
                 }
-                c.BisectionSearch(Arrays.baseArray, x);
+                c.BisectionSearch(Arrays.baseArray, m.x);
                 Console.ReadLine();
 
             }

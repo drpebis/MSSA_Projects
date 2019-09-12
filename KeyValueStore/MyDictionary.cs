@@ -52,23 +52,23 @@ namespace KeyValueStore
                 }
                 else
                 {
-                    KeyValue[] keyValueArray2 = new KeyValue[count + 1];
-                    for (int j = 0; j < keyValueArray2.Length; j++)
+                    KeyValue[] temp = new KeyValue[count + 1];
+                    for (int j = 0; j < temp.Length; j++)
                     {
-                        if (j < keyValueArray2.Length - 1)
+                        if (j < temp.Length - 1)
                         {
-                            keyValueArray2[j] = new KeyValue(keyValueArray[j].Key, keyValueArray[j].Value);
+                            temp[j] = new KeyValue(keyValueArray[j].Key, keyValueArray[j].Value);
                         }
                         else
                         {
-                            keyValueArray2[j] = new KeyValue(key, value);
+                            temp[j] = new KeyValue(key, value);
                         }
                     }
                     Array.Clear(keyValueArray, 0, count);
                     Array.Resize(ref keyValueArray, count + 1);
                     for (int j = 0; j < keyValueArray.Length; j++)
                     {
-                        keyValueArray[j] = new KeyValue(keyValueArray2[j].Key, keyValueArray2[j].Value); 
+                        keyValueArray[j] = new KeyValue(temp[j].Key, temp[j].Value); 
                     }
                 }
             }
