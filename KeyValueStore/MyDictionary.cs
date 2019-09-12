@@ -12,16 +12,18 @@ namespace KeyValueStore
         {
             count = this.keyValueArray.Length;
         }
+
         private int count;//Used to keep track of number of stored values 
+
         KeyValue[] keyValueArray = new KeyValue[5] {
-                new KeyValue("Cats", 1),
+                new KeyValue("cats", 1),
                 new KeyValue("logs", 2),
                 new KeyValue("bogs", 3),
                 new KeyValue("cogs", 4),
                 new KeyValue("pogs", 5)
             }; //Array of the KeyValue struct
                 
-        public object this[string key] //Indexer, don't think I'm doing this right...
+        public object this[string key] //Indexer
         {
             get
             {  
@@ -29,7 +31,6 @@ namespace KeyValueStore
                 {
                     if (keyValueArray[i].Key.ToLower() == key.ToLower())
                     {
-                        //return new KeyValue(key, i);
                         return keyValueArray[i].Value;
                     }
                 }
@@ -65,7 +66,6 @@ namespace KeyValueStore
                     }
                     Array.Clear(keyValueArray, 0, count);
                     Array.Resize(ref keyValueArray, count + 1);
-                    count++;
                     for (int j = 0; j < keyValueArray.Length; j++)
                     {
                         keyValueArray[j] = new KeyValue(keyValueArray2[j].Key, keyValueArray2[j].Value); 
