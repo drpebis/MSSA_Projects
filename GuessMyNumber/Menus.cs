@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace GuessMyNumber
 {
-    class Menus
+    public class Menus
     {
-        //[Range(0,10)]
-        //public int x { get; set; }
+        [Range(0, 10)]
+        public int x { get; set; }
 
         //public int X
         //{
@@ -87,23 +84,29 @@ namespace GuessMyNumber
             try
             {
                 MenuOption m = new MenuOption();
+                var p = new Program();
                 m.x = Convert.ToInt32(Console.ReadLine());
+                if (RunValidateProperty(m.x))
+                    {
+                    c.BisectionSearch(Arrays.baseArray, m.x);
+                }
+
                 //var context = new ValidationContext(m.x);
                 //var result = new List<ValidationResult>();
                 //var isValid = Validator.TryValidateObject(m.x, context, result);
-                //if(result.Any())
+                //if (result.Any())
                 //{
                 //    Console.WriteLine(result[0].ErrorMessage);
                 //}
-                if (m.x < 0 || m.x > 10)
-                {
-                    Console.WriteLine("Invalid entry.");
-                    Console.ReadLine();
-                    Console.Clear();
-                    i.IntroScreen();
-                    Start();
-                }
-                c.BisectionSearch(Arrays.baseArray, m.x);
+                //if (m.x < 0 || m.x > 10)
+                //{
+                Console.WriteLine("Invalid entry.");
+                Console.ReadLine();
+                Console.Clear();
+                i.IntroScreen();
+                Start();
+                //}
+
                 Console.ReadLine();
 
             }
@@ -113,6 +116,20 @@ namespace GuessMyNumber
                 Console.ReadLine();
                 Start();
             }
+
+            
+        }
+        static bool RunValidateProperty(int x)
+        {
+            var m = new MenuOption();
+            var context = new ValidationContext(m) { MemberName = "x" };
+            var result = new List<ValidationResult>();
+            var isValid = Validator.TryValidateObject(x, context, result);
+            return isValid;
+            //if (result.Any())
+            //{
+            //    Console.WriteLine(result[0].ErrorMessage);
+            //}
         }
     }
 }

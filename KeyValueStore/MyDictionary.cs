@@ -12,18 +12,17 @@ namespace KeyValueStore
         {
             count = this.keyValueArray.Length;
         }
-
         private int count;//Used to keep track of number of stored values 
-
-        KeyValue[] keyValueArray = new KeyValue[5] {
-                new KeyValue("cats", 1),
-                new KeyValue("logs", 2),
-                new KeyValue("bogs", 3),
-                new KeyValue("cogs", 4),
-                new KeyValue("pogs", 5)
+        Dictionary<string, int> dictionary = new Dictionary<string, int>();
+        KeyValue<int>[] keyValueArray = new KeyValue<int>[5] { //Generic type parameter is now defined as int
+                new KeyValue<int>("Rats", 1),
+                new KeyValue<int>("logs", 2),
+                new KeyValue<int>("bogs", 3),
+                new KeyValue<int>("cogs", 4),
+                new KeyValue<int>("pogs", 5)
             }; //Array of the KeyValue struct
                 
-        public object this[string key] //Indexer
+        public object this[string key] //Indexer, don't think I'm doing this right...
         {
             get
             {  
@@ -31,6 +30,7 @@ namespace KeyValueStore
                 {
                     if (keyValueArray[i].Key.ToLower() == key.ToLower())
                     {
+                        //return new KeyValue(key, i);
                         return keyValueArray[i].Value;
                     }
                 }
@@ -45,30 +45,31 @@ namespace KeyValueStore
                     {
                         if (keyValueArray[i].Key.ToLower() == key.ToLower())
                         {
-                            keyValueArray[i] = new KeyValue(key, value);
+                            keyValueArray[i] = new KeyValue<int>(key, (int)value);
                         }
 
                     }
                 }
                 else
                 {
-                    KeyValue[] temp = new KeyValue[count + 1];
-                    for (int j = 0; j < temp.Length; j++)
+                    KeyValue<int>[] keyValueArray2 = new KeyValue<int>[count + 1];
+                    for (int j = 0; j < keyValueArray2.Length; j++)
                     {
-                        if (j < temp.Length - 1)
+                        if (j < keyValueArray2.Length - 1)
                         {
-                            temp[j] = new KeyValue(keyValueArray[j].Key, keyValueArray[j].Value);
+                            keyValueArray2[j] = new KeyValue<int>(keyValueArray[j].Key, keyValueArray[j].Value);
                         }
                         else
                         {
-                            temp[j] = new KeyValue(key, value);
+                            keyValueArray2[j] = new KeyValue<int>(key, (int)value);
                         }
                     }
                     Array.Clear(keyValueArray, 0, count);
                     Array.Resize(ref keyValueArray, count + 1);
+                    count++;
                     for (int j = 0; j < keyValueArray.Length; j++)
                     {
-                        keyValueArray[j] = new KeyValue(temp[j].Key, temp[j].Value); 
+                        keyValueArray[j] = new KeyValue<int>(keyValueArray2[j].Key, keyValueArray2[j].Value); 
                     }
                 }
             }
