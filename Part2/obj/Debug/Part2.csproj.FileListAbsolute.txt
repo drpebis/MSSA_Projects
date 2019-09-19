@@ -1,0 +1,2 @@
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Part2\obj\Debug\Part2.csprojAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\MSSA_Projects\Part2\obj\Debug\Part2.csproj.CoreCompileInputs.cache
