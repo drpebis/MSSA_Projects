@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Collections.Models.Collection>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Jeff Co. Payroll</h1>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Filter by Date: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.EmployeeName)*@
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.EmployeeName)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RateOfPay)
+              
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoursWorked)
+             
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.PayWeek)*@
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.PayWeek)</a>
+            </th>
+            <th>Overtime?</th>
+            <th>
+                Total Pay
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RateOfPay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoursWorked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayWeek)
+            </td>
+            <td>
+                @*@if (item.HoursWorked > 40)
+                {<p>Yes,  @(item.HoursWorked - 40) hours</p>}*@
+                @Collection.OverTime(item.HoursWorked)
+            </td>
+            <td>
+                @*@if (item.HoursWorked > 40)
+                { @(((item.HoursWorked - 40) + item.RateOfPay/2) + item.HoursWorked * item.RateOfPay) }
+                @if (item.HoursWorked <= 40)
+                {@(item.HoursWorked * item.RateOfPay)}*@
+                @*@Html.DisplayFor(modelItem => item.GetPay(item.HoursWorked, item.RateOfPay))*@
+                @Collection.GetPay(item.HoursWorked, item.RateOfPay)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

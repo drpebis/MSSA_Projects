@@ -1,6 +1,9 @@
 # MSSA_Projects
 Collection of various projects I've made while in MSSA
 
+-ASP.NET Core MVC Collections (30 Sept 19)
+A simple web app using a database to store payroll information about employees.
+
 -Key Value Store (11 Sept 19)
 Application involving the usage of structs, and object arrays.
 
